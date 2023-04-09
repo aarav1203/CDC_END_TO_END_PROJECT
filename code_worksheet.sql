@@ -162,3 +162,8 @@ create or replace pipe lineitem_pipe auto_ingest=True as
 copy into lineitem_raw_json from @STG_LINEITEM_JSON_DEV;
 
 show pipes;
+
+//Checking History of all tasks related current table or database
+select * from table(information_schema.task_history(
+scheduled_time_range_start=>dateadd('hour',-1,current_timestamp()),
+result_limit => 100));
