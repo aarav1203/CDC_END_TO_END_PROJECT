@@ -8,7 +8,11 @@ Create a Pipeline that will ingest data from external stage(In this situation it
 1. Snowflake
 2. AWS
 
-# Approach
+# Folder Architecture
+S3/Bucket_name/folder_name/file.json
+when any new file come into folder it will generate notification that wll trigger snowpipe  present in snowflake.
+
+# Steps
 1. Create S3 bucket that will act as external stage(assign proper role so snowflake will read data from S3 bucket).
 2. Create event notification and add SQS as destination so that it will trigger snowpipe in snowflake when new data comes to S3 bucket.
 3. Create all Required Tables,Schemas and assign permission to 'Sysadmin' role from 'AccountAdmin' Role.
